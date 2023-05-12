@@ -4,7 +4,10 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head>
+        <title>Dashboard</title>
+        <link rel="icon" type="image/ico" href="/favicon.ico" />
+    </Head>
 
     <AuthenticatedLayout>
         <template #header>
