@@ -4,89 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e03408aa52c081b4416f63112027d70a",
+    "content-hash": "941584cffc9eaf2ab6e37b2b53d43cb1",
     "packages": [
-        {
-            "name": "beyondcode/expose",
-            "version": "2.6.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/beyondcode/expose.git",
-                "reference": "c9ec4e6f7a52590ca1ef8845f9299c38ce6e7644"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/beyondcode/expose/zipball/c9ec4e6f7a52590ca1ef8845f9299c38ce6e7644",
-                "reference": "c9ec4e6f7a52590ca1ef8845f9299c38ce6e7644",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "laravel-zero/phar-updater": "^1.2",
-                "php": "^8.1"
-            },
-            "require-dev": {
-                "cboden/ratchet": "dev-master",
-                "clue/block-react": "^1.4",
-                "clue/reactphp-sqlite": "dev-modular-worker-for-phar-support",
-                "guzzlehttp/guzzle": "^7.4",
-                "guzzlehttp/psr7": "^1.7",
-                "illuminate/http": "^9.0",
-                "illuminate/log": "^9.0",
-                "illuminate/pipeline": "^9.0",
-                "illuminate/validation": "^9.0",
-                "laminas/laminas-http": "^2.13",
-                "laravel-zero/framework": "^9.0",
-                "mockery/mockery": "^1.4.2",
-                "nikic/php-parser": "^v4.10",
-                "nyholm/psr7": "^1.3",
-                "octoper/cuzzle": "dev-master",
-                "phpunit/phpunit": "^9.4.3",
-                "ratchet/pawl": "^0.3.5",
-                "react/http": "^1.1.0",
-                "react/socket": "^1.6",
-                "react/stream": "^1.1.1",
-                "riverline/multipart-parser": "^2.0",
-                "symfony/expression-language": "^5.2",
-                "symfony/http-kernel": "^6.0",
-                "symfony/psr-http-message-bridge": "^2.0",
-                "twig/twig": "^3.1"
-            },
-            "bin": [
-                "builds/expose"
-            ],
-            "type": "project",
-            "autoload": {
-                "files": [
-                    "app/helpers.php"
-                ],
-                "psr-4": {
-                    "App\\": "app/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marcel Pociot",
-                    "email": "marcel@beyondco.de"
-                }
-            ],
-            "description": "Create public URLs for local sites through any firewall and VPN.",
-            "homepage": "https://sharedwithexpose.com",
-            "keywords": [
-                "expose",
-                "ngrok",
-                "tunnel"
-            ],
-            "support": {
-                "issues": "https://github.com/beyondcode/expose/issues",
-                "source": "https://github.com/beyondcode/expose/tree/2.6.2"
-            },
-            "time": "2023-04-26T11:30:45+00:00"
-        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -1129,66 +1048,6 @@
                 }
             ],
             "time": "2023-01-17T01:02:51+00:00"
-        },
-        {
-            "name": "laravel-zero/phar-updater",
-            "version": "v1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-zero/phar-updater.git",
-                "reference": "0b09e35a7c2296992b2f92d921f828cd311eebb5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-zero/phar-updater/zipball/0b09e35a7c2296992b2f92d921f828cd311eebb5",
-                "reference": "0b09e35a7c2296992b2f92d921f828cd311eebb5",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.0"
-            },
-            "conflict": {
-                "padraic/phar-updater": "*"
-            },
-            "require-dev": {
-                "ext-json": "*",
-                "phpstan/phpstan": "^1.4.5",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Humbug\\SelfUpdate\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Padraic Brady",
-                    "email": "padraic.brady@gmail.com",
-                    "homepage": "http://blog.astrumfutura.com"
-                },
-                {
-                    "name": "Owen Voke",
-                    "email": "development@voke.dev",
-                    "homepage": "https://voke.dev"
-                }
-            ],
-            "description": "A thing to make PHAR self-updating easy and secure.",
-            "keywords": [
-                "humbug",
-                "phar",
-                "self-update",
-                "update"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel-zero/phar-updater/issues",
-                "source": "https://github.com/laravel-zero/phar-updater/tree/v1.3.0"
-            },
-            "time": "2022-02-04T18:59:19+00:00"
         },
         {
             "name": "laravel/framework",
@@ -6125,6 +5984,50 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2023-05-04T14:52:56+00:00"
+        },
+        {
+            "name": "lucascudo/laravel-pt-br-localization",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lucascudo/laravel-pt-BR-localization.git",
+                "reference": "ca163788fd1ab18ecedb4f5faa663a85916d753c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lucascudo/laravel-pt-BR-localization/zipball/ca163788fd1ab18ecedb4f5faa663a85916d753c",
+                "reference": "ca163788fd1ab18ecedb4f5faa663a85916d753c",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lucascudo\\LaravelPtBRLocalization\\LaravelPtBRLocalizationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lucascudo\\LaravelPtBRLocalization\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Cascudo",
+                    "email": "lucas.sisau@gmail.com"
+                }
+            ],
+            "description": "Arquivos de linguagem em Português do Brasil (pt_BR) para Laravel",
+            "support": {
+                "issues": "https://github.com/lucascudo/laravel-pt-BR-localization/issues",
+                "source": "https://github.com/lucascudo/laravel-pt-BR-localization/tree/v2.0.2"
+            },
+            "time": "2023-04-10T11:43:36+00:00"
         },
         {
             "name": "mockery/mockery",
