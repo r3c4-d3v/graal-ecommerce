@@ -92,6 +92,7 @@ const storeProduct = () => {
                     v-model="form.price"
                     type="text"
                     class="mt-1 block w-full"
+                    max-lenght="9"
                     use-money-mask
                 />
 

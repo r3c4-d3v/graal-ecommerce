@@ -32,12 +32,9 @@ function formatMoney() {
     value = value + '';
     value = value.replace(/([0-9]{2})$/g, ",$1");
 
-    if (value.length > 6) {
-        value = value.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-    }
-
-    if(value === 'NaN') return '';
-    return "R$ " + value;
+    if (value.length > 6) value = value.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    if (value === 'NaN') return '';
+    if (value.length <= 10) return "R$ " + value
 }
 
 
