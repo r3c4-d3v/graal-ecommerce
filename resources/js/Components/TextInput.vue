@@ -1,6 +1,5 @@
 <script setup>
 import { getCurrentInstance, onMounted, ref } from 'vue';
-import { MaskInput } from "maska";
 
 defineProps({
     modelValue: {
