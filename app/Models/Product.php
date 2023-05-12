@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Product extends Model
 {
+    use HasTranslations;
+
+    public array $translatable = ['name', 'category_id'];
+
     protected $fillable = [
         'name',
         'description',
@@ -20,7 +25,7 @@ class Product extends Model
             'name' => $product['name'],
             'description' => $product['description'],
             'price' => $product['price'],
-            'categoryId' => number_format($product['categoryId'], 2, '.', '')
+            'category' => number_format($product['category'], 2, '.', '')
         ]);
         $newProduct->save();
         return $newProduct;

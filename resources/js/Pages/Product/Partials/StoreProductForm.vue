@@ -9,13 +9,13 @@ import { ref } from 'vue';
 const nameInput = ref(null);
 const descriptionInput = ref(null);
 const priceInput = ref(null);
-const categoryIdInput = ref(null);
+const categoryInput = ref(null);
 
 const form = useForm({
     name: '',
     description: '',
     price: '',
-    categoryId: ''
+    category: ''
 });
 
 const storeProduct = () => {
@@ -35,9 +35,9 @@ const storeProduct = () => {
                 form.reset('price');
                 priceInput.value.focus();
             }
-            if (form.errors.categoryId) {
-                form.reset('categoryId');
-                categoryIdInput.value.focus();
+            if (form.errors.category) {
+                form.reset('category');
+                categoryInput.value.focus();
             }
         },
     });
@@ -64,7 +64,6 @@ const storeProduct = () => {
                     v-model="form.name"
                     type="text"
                     class="mt-1 block w-full"
-                    autocomplete="name"
                 />
 
                 <InputError :message="form.errors.name" class="mt-2" />
@@ -79,7 +78,6 @@ const storeProduct = () => {
                     v-model="form.description"
                     type="text"
                     class="mt-1 block w-full"
-                    autocomplete="description"
                 />
 
                 <InputError :message="form.errors.description" class="mt-2" />
@@ -94,24 +92,22 @@ const storeProduct = () => {
                     v-model="form.price"
                     type="text"
                     class="mt-1 block w-full"
-                    autocomplete="price"
                 />
 
                 <InputError :message="form.errors.price" class="mt-2" />
             </div>
             <div>
-                <InputLabel for="categoryId" value="Categoria id" />
+                <InputLabel for="category" value="Categoria id" />
 
                 <TextInput
-                    id="categoryId"
-                    ref="categoryIdInput"
-                    v-model="form.categoryId"
+                    id="category"
+                    ref="categoryInput"
+                    v-model="form.category"
                     type="number"
                     class="mt-1 block w-full"
-                    autocomplete="categoryId"
                 />
 
-                <InputError :message="form.errors.categoryId" class="mt-2" />
+                <InputError :message="form.errors.category" class="mt-2" />
             </div>
 
             <div class="flex items-center gap-4">

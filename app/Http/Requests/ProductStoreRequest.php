@@ -17,7 +17,7 @@ class ProductStoreRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'price' => ['required', 'numeric', 'max:9999.99'],
-            'categoryId' => ['required', 'numeric']
+            'category' => ['required', 'numeric']
         ];
     }
 }
