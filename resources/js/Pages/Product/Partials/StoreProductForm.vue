@@ -3,8 +3,8 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import {useForm} from '@inertiajs/vue3';
+import {ref} from 'vue';
 
 const nameInput = ref(null);
 const descriptionInput = ref(null);
@@ -56,7 +56,7 @@ const storeProduct = () => {
 
         <form @submit.prevent="storeProduct" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="name" value="Nome do produto" />
+                <InputLabel for="name" value="Nome do produto"/>
 
                 <TextInput
                     id="name"
@@ -66,11 +66,11 @@ const storeProduct = () => {
                     class="mt-1 block w-full"
                 />
 
-                <InputError :message="form.errors.name" class="mt-2" />
+                <InputError :message="form.errors.name" class="mt-2"/>
             </div>
 
             <div>
-                <InputLabel for="description" value="Descrição do produto." />
+                <InputLabel for="description" value="Descrição do produto."/>
 
                 <TextInput
                     id="description"
@@ -80,11 +80,11 @@ const storeProduct = () => {
                     class="mt-1 block w-full"
                 />
 
-                <InputError :message="form.errors.description" class="mt-2" />
+                <InputError :message="form.errors.description" class="mt-2"/>
             </div>
 
             <div>
-                <InputLabel for="price" value="Preço por unidade" />
+                <InputLabel for="price" value="Preço por unidade"/>
 
                 <TextInput
                     id="price"
@@ -92,12 +92,13 @@ const storeProduct = () => {
                     v-model="form.price"
                     type="text"
                     class="mt-1 block w-full"
+                    use-money-mask
                 />
 
-                <InputError :message="form.errors.price" class="mt-2" />
+                <InputError :message="form.errors.price" class="mt-2"/>
             </div>
             <div>
-                <InputLabel for="category" value="Categoria id" />
+                <InputLabel for="category" value="Categoria id"/>
 
                 <TextInput
                     id="category"
@@ -107,7 +108,7 @@ const storeProduct = () => {
                     class="mt-1 block w-full"
                 />
 
-                <InputError :message="form.errors.category" class="mt-2" />
+                <InputError :message="form.errors.category" class="mt-2"/>
             </div>
 
             <div class="flex items-center gap-4">
