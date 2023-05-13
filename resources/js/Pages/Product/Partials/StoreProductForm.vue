@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 
 const nameInput = ref(null);
 const descriptionInput = ref(null);
@@ -37,6 +38,9 @@ const storeProduct = () => {
         },
     });
 }
+
+const reset = () => form.reset();
+
 </script>
 
 <template>
@@ -52,14 +56,14 @@ const storeProduct = () => {
             <!-- Name Input -->
             <div>
                 <InputLabel for="name" value="Nome do produto"/>
-                <TextInput id="name" ref="nameInput" v-model="form.name" type="text" />
+                <TextInput id="name" ref="nameInput" v-model="form.name" type="text"/>
                 <InputError :message="form.errors.name"/>
             </div>
 
             <!-- Description Input -->
             <div>
                 <InputLabel for="description" value="Descrição do produto."/>
-                <TextInput id="description" ref="descriptionInput" v-model="form.description" type="text" />
+                <TextInput id="description" ref="descriptionInput" v-model="form.description" type="text"/>
                 <InputError :message="form.errors.description"/>
             </div>
 
@@ -73,13 +77,14 @@ const storeProduct = () => {
             <!-- Category Input -->
             <div>
                 <InputLabel for="category" value="Categoria"/>
-                <TextInput id="category" ref="categoryInput" v-model="form.category" type="text" />
+                <TextInput id="category" ref="categoryInput" v-model="form.category" type="text"/>
                 <InputError :message="form.errors.category"/>
             </div>
 
             <!-- Buttons -->
             <div class="container-buttons">
                 <PrimaryButton :disabled="form.processing">Cadastrar</PrimaryButton>
+                <SecondaryButton v-on:click="reset" :disabled="form.processing">Limpar campos</SecondaryButton>
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition-default">
                     <p v-if="form.recentlySuccessful" class="p-success">Produto Cadastrado.</p>
                 </Transition>
