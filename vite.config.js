@@ -3,6 +3,13 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+    css: {
+      loaderOptions: {
+          scss: {
+              prependData: `@import "/scss/_app.scss"`
+          }
+      }
+    },
     plugins: [
         laravel({
             input: 'resources/js/app.js',

@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .wrapper {
+        @apply py-12;
+    }
+
+    .container {
+        @apply max-w-7xl mx-auto sm:px-6 lg:px-8;
+        &-buttons {
+            @apply flex items-center gap-4;
+
+        }
+
+        .content {
+            @apply bg-white overflow-hidden shadow-sm sm:rounded-lg;
+        }
+    }
+
+    .form {
+        @apply mt-6 space-y-6;
+    }
+
+    .h1 {
+        @apply font-semibold text-xl text-gray-800 leading-tight;
+    }
+
+    .h2 {
+        @apply text-lg font-medium text-gray-900;
+    }
+
+    .p {
+        &-small {
+            @apply mt-1 text-sm text-gray-600;
+        }
+
+        &-error {
+            @apply text-sm text-red-600 mt-2;
+        }
+
+        &-success {
+            @apply text-sm text-green-700;
+        }
+    }
+
+    .input {
+        @apply focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full border-gray-300;
+    }
+
+    .button {
+        &-primary {
+            @apply inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold
+            text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900
+            focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150;
+        }
+
+        &-secondary {
+            @apply inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs
+            text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2
+            focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150;
+        }
+    }
+
+    .transition {
+        &-defaultt {
+            @apply transition duration-700 ease-in-out;
+        }
+    }
+}

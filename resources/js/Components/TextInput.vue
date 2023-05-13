@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, defineExpose, toRefs } from 'vue';
+import { onMounted, ref, toRefs } from 'vue';
 
 const props = defineProps({
     modelValue: {
@@ -40,7 +40,7 @@ function formatMoney(value) {
 
 <template>
     <input
-        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+        class="input"
         :value="useMoneyMask ? formatMoney(modelValue) : modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         ref="input"
