@@ -1,7 +1,7 @@
 <script setup>
-import { getCurrentInstance, onMounted, ref } from 'vue';
+import { onMounted, ref, defineExpose, toRefs } from 'vue';
 
-defineProps({
+const props = defineProps({
     modelValue: {
         type: String,
         required: true,
@@ -11,10 +11,9 @@ defineProps({
         default: false
     }
 });
+const { modelValue, useMoneyMask } = toRefs(props);
 
 const input = ref(null);
-
-const {props} = getCurrentInstance();
 
 onMounted(() => {
     if (input.value.hasAttribute('autofocus')) {
@@ -22,22 +21,21 @@ onMounted(() => {
     }
 });
 
-function formatMoney() {
-    let value = props.modelValue.replace('R$ ', '');
+defineExpose({
+    focus: () => input.value.focus()
+});
 
-    value = value.replace(/\D+/g, '');
-    value = value + '';
-    value = parseInt(value);
-    value = value + '';
-    value = value.replace(/([0-9]{2})$/g, ",$1");
+function formatMoney(value) {
+    let newValue = value.replace(/\D/g, '');
+    newValue = newValue.replace(/^(\d+)(\d{2})$/, "$1.$2");
+    newValue = newValue.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 
-    if (value.length > 6) value = value.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-    if (value === 'NaN') return '';
-    if (value.length <= 10) return "R$ " + value
+    if (newValue === 'NaN') {
+        return '';
+    }
+
+    return 'R$ ' + newValue;
 }
-
-
-defineExpose({focus: () => input.value.focus()});
 </script>
 
 <template>

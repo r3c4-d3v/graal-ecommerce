@@ -4,7 +4,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import {useForm} from '@inertiajs/vue3';
-import {ref} from 'vue';
+import { ref } from 'vue';
 
 const nameInput = ref(null);
 const descriptionInput = ref(null);
@@ -18,30 +18,25 @@ const form = useForm({
     category: ''
 });
 
-const storeProduct = () => {
+const handleFormFieldErrors = (fieldName, inputElement) => {
+    if(form.errors[fieldName]) {
+        form.reset(fieldName);
+        inputElement.focus();
+    }
+}
+
+function storeProduct() {
     form.post(route('product.store'), {
         preserveScroll: true,
         onSuccess: () => form.reset(),
         onError: () => {
-            if (form.errors.name) {
-                form.reset('name');
-                nameInput.value.focus();
-            }
-            if (form.errors.description) {
-                form.reset('description');
-                descriptionInput.value.focus();
-            }
-            if (form.errors.price) {
-                form.reset('price');
-                priceInput.value.focus();
-            }
-            if (form.errors.category) {
-                form.reset('category');
-                categoryInput.value.focus();
-            }
+            handleFormFieldErrors('name', nameInput);
+            handleFormFieldErrors('description', descriptionInput);
+            handleFormFieldErrors('price', priceInput);
+            handleFormFieldErrors('category', categoryInput);
         },
     });
-};
+}
 </script>
 
 <template>
@@ -55,6 +50,7 @@ const storeProduct = () => {
         </header>
 
         <form @submit.prevent="storeProduct" class="mt-6 space-y-6">
+            <!-- Name Input -->
             <div>
                 <InputLabel for="name" value="Nome do produto"/>
 
@@ -69,6 +65,7 @@ const storeProduct = () => {
                 <InputError :message="form.errors.name" class="mt-2"/>
             </div>
 
+            <!-- Description Input -->
             <div>
                 <InputLabel for="description" value="Descrição do produto."/>
 
@@ -83,6 +80,7 @@ const storeProduct = () => {
                 <InputError :message="form.errors.description" class="mt-2"/>
             </div>
 
+            <!-- Price Input -->
             <div>
                 <InputLabel for="price" value="Preço por unidade"/>
 
@@ -92,20 +90,21 @@ const storeProduct = () => {
                     v-model="form.price"
                     type="text"
                     class="mt-1 block w-full"
-                    max-lenght="9"
                     use-money-mask
                 />
 
                 <InputError :message="form.errors.price" class="mt-2"/>
             </div>
+
+            <!-- Category Input -->
             <div>
-                <InputLabel for="category" value="Categoria id"/>
+                <InputLabel for="category" value="Categoria"/>
 
                 <TextInput
                     id="category"
                     ref="categoryInput"
                     v-model="form.category"
-                    type="number"
+                    type="text"
                     class="mt-1 block w-full"
                 />
 
@@ -122,3 +121,5 @@ const storeProduct = () => {
         </form>
     </section>
 </template>
+
+
