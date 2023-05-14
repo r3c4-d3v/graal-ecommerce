@@ -5,7 +5,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import {useForm} from '@inertiajs/vue3';
 import {ref} from 'vue';
-import SecondaryButton from "@/Components/SecondaryButton.vue";
+import DangerButton
+    from "../../../../../vendor/laravel/breeze/stubs/inertia-vue-ts/resources/js/Components/DangerButton.vue";
 
 const nameInput = ref(null);
 const descriptionInput = ref(null);
@@ -88,7 +89,7 @@ const reset = () => form.reset();
             <!-- Buttons -->
             <div class="container-buttons">
                 <PrimaryButton :disabled="form.processing">Cadastrar</PrimaryButton>
-                <SecondaryButton v-on:click="reset" :disabled="form.processing">Limpar campos</SecondaryButton>
+                <DangerButton v-on:click="reset" :disabled="form.processing">Limpar campos</DangerButton>
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition-default">
                     <p v-if="form.recentlySuccessful" class="p-success">Produto Cadastrado.</p>
                 </Transition>
