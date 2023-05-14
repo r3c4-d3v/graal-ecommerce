@@ -13,17 +13,18 @@ use Inertia\Response;
 
 class ProductController extends Controller
 {
-    public function edit(Request $request): Response
+    public function index(Request $request): Response
     {
-        return Inertia::render('Product/Edit', [
+        return Inertia::render('Product/index', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status')
+            'status' => session('status'),
+            'productsList' => Product::orderBy('id', 'desc')->paginate(6)
         ]);
     }
 
     public function store(ProductStoreRequest $request): RedirectResponse
     {
         Product::create($request->validated());
-        return Redirect::route('product.edit');
+        return Redirect::route('product.index');
     }
 }
