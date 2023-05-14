@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductStoreRequest;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class ProductController extends Controller
         return Inertia::render('Product/index', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
-            'productsList' => Product::orderBy('id', 'desc')->paginate(6)
+            'productsList' => Product::orderBy('id', 'desc')->paginate(6),
+            'productCategories' => ProductCategory::orderBy('name', 'desc')->get()->toArray()
         ]);
     }
 

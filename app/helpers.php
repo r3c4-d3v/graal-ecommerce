@@ -8,5 +8,5 @@ function stringToCurrency(string $currency): float
         $currency
     );
 
-    return floatval($convertedCurrency / 100);
+    return floatval((int)$convertedCurrency / 100);
 }

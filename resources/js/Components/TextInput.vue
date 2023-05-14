@@ -1,5 +1,16 @@
+<template>
+    <input
+        ref="input"
+        class="input"
+        :value="useMoneyMask ? formatMoney(modelValue) : modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+    />
+</template>
+
 <script setup>
-import { onMounted, ref, toRefs } from 'vue';
+import { onMounted, ref } from 'vue';
+
+const input = ref(null);
 
 const props = defineProps({
     modelValue: {
@@ -11,9 +22,6 @@ const props = defineProps({
         default: false
     }
 });
-const { modelValue, useMoneyMask } = toRefs(props);
-
-const input = ref(null);
 
 onMounted(() => {
     if (input.value.hasAttribute('autofocus')) {
@@ -34,15 +42,6 @@ function formatMoney(value) {
         return '';
     }
 
-    return 'R$ ' + newValue;
+    return newValue;
 }
 </script>
-
-<template>
-    <input
-        class="input"
-        :value="useMoneyMask ? formatMoney(modelValue) : modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        ref="input"
-    />
-</template>

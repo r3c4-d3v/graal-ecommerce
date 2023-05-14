@@ -1,50 +1,5 @@
-<script setup>
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import {useForm} from '@inertiajs/vue3';
-import {ref} from 'vue';
-import SecondaryButton from "@/Components/SecondaryButton.vue";
-
-const nameInput = ref(null);
-const descriptionInput = ref(null);
-const priceInput = ref(null);
-const categoryInput = ref(null);
-
-const form = useForm({
-    name: '',
-    description: '',
-    price: '',
-    category: ''
-});
-
-const handleFormFieldErrors = (fieldName, inputElement) => {
-    if (form.errors[fieldName]) {
-        form.reset(fieldName);
-        inputElement.focus();
-    }
-}
-
-const storeProduct = () => {
-    form.post(route('product.store'), {
-        preserveScroll: true,
-        onSuccess: () => form.reset(),
-        onError: () => {
-            handleFormFieldErrors('name', nameInput);
-            handleFormFieldErrors('description', descriptionInput);
-            handleFormFieldErrors('price', priceInput);
-            handleFormFieldErrors('category', categoryInput);
-        },
-    });
-}
-
-const reset = () => form.reset();
-
-</script>
-
 <style lang="scss">
-    @import "resources/scss/app.scss";
+@import "resources/scss/app.scss";
 </style>
 
 <template>
@@ -59,42 +14,135 @@ const reset = () => form.reset();
         <form @submit.prevent="storeProduct" class="form">
             <!-- Name Input -->
             <div>
-                <InputLabel for="name" value="Nome do produto"/>
-                <TextInput id="name" ref="nameInput" v-model="form.name" type="text"/>
+                <InputLabel
+                    for="name"
+                    value="Nome do produto"
+                />
+
+                <TextInput
+                    id="name"
+                    type="text"
+                    ref="nameInput"
+                    v-model="form.name"
+                />
+
                 <InputError :message="form.errors.name"/>
             </div>
 
             <!-- Description Input -->
             <div>
-                <InputLabel for="description" value="Descrição do produto."/>
-                <TextInput id="description" ref="descriptionInput" v-model="form.description" type="text"/>
+                <InputLabel
+                    for="description"
+                    value="Descrição do produto."
+                />
+
+                <TextInput
+                    type="text"
+                    id="description"
+                    ref="descriptionInput"
+                    v-model="form.description"
+                />
+
                 <InputError :message="form.errors.description"/>
             </div>
 
             <!-- Price Input -->
             <div>
                 <InputLabel for="price" value="Preço por unidade"/>
-                <TextInput id="price" ref="priceInput" v-model="form.price" type="text" use-money-mask/>
+
+                <TextInput
+                    id="price"
+                    type="text"
+                    use-money-mask
+                    ref="priceInput"
+                    v-model="form.price"
+                />
+
                 <InputError :message="form.errors.price"/>
             </div>
 
             <!-- Category Input -->
             <div>
                 <InputLabel for="category" value="Categoria"/>
-                <TextInput id="category" ref="categoryInput" v-model="form.category" type="text"/>
+
+                <SelectInput
+                    id="category"
+                    ref="categoryInput"
+                    v-model="form.category"
+                    :input-options="productCategories"
+                />
+
                 <InputError :message="form.errors.category"/>
             </div>
 
             <!-- Buttons -->
             <div class="container-buttons">
                 <PrimaryButton :disabled="form.processing">Cadastrar</PrimaryButton>
-                <SecondaryButton v-on:click="reset" :disabled="form.processing">Limpar campos</SecondaryButton>
-                <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition-default">
-                    <p v-if="form.recentlySuccessful" class="p-success">Produto Cadastrado.</p>
+
+                <Transition
+                    class="transition-default"
+                    leave-to-class="opacity-0"
+                    enter-from-class="opacity-0"
+                >
+                    <p v-if="form.recentlySuccessful" class="p-success">
+                        Produto Cadastrado.
+                    </p>
                 </Transition>
             </div>
         </form>
     </section>
 </template>
 
+<script setup>
+import {
+    InputLabel,
+    InputError,
+    PrimaryButton,
+    TextInput,
+    SelectInput,
+    useForm,
+    usePage,
+    ref
+} from "@/Pages/Product/Partials/Barrels/StoreProductForm.js";
+
+const nameInput = ref(null);
+const descriptionInput = ref(null);
+const priceInput = ref(null);
+const categoryInput = ref(null);
+
+const productCategories = usePage().props.productCategories;
+
+const form = useForm({
+    name: '',
+    description: '',
+    price: '',
+    category: ''
+});
+
+const handleFormFieldErrors = (fieldName, inputElement) => {
+    if (form.errors[fieldName]) {
+        form.reset(fieldName);
+        inputElement.value.focus();
+    }
+}
+
+const reset = () => {
+    form.reset();
+    categoryInput.value.resetSelected()
+};
+
+const storeProduct = () => {
+    form.post(route('product.store'), {
+        preserveScroll: true,
+        onSuccess: () => reset(),
+        onError: () => {
+            handleFormFieldErrors('name', nameInput);
+            handleFormFieldErrors('description', descriptionInput);
+            handleFormFieldErrors('price', priceInput);
+            handleFormFieldErrors('category', categoryInput);
+        },
+    });
+}
+
+</script>
 
