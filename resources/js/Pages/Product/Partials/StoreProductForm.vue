@@ -3,8 +3,8 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import {useForm} from '@inertiajs/vue3';
+import {ref} from 'vue';
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 
 const nameInput = ref(null);
@@ -42,6 +42,10 @@ const storeProduct = () => {
 const reset = () => form.reset();
 
 </script>
+
+<style lang="scss">
+    @import "resources/scss/app.scss";
+</style>
 
 <template>
     <section>

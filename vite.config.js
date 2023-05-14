@@ -6,7 +6,7 @@ export default defineConfig({
     css: {
       loaderOptions: {
           scss: {
-              prependData: `@import "/scss/_app.scss"`
+              prependData: `@import "./resources/scss/app.scss"`
           }
       }
     },

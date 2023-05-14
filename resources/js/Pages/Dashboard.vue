@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <style lang="scss">
-    @use "../../../resources/scss/app.scss";
+    @import "resources/scss/app.scss";
 </style>
 
 <template>
