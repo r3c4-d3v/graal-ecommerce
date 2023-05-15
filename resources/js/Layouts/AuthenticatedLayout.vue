@@ -23,6 +23,9 @@
                                 <NavLink :href="route('product.index')" :active="route().current('product.index')">
                                     Produtos
                                 </NavLink>
+                                <NavLink :href="route('category.index')" :active="route().current('category.index')">
+                                    Categorias
+                                </NavLink>
                             </div>
                         </div>
 

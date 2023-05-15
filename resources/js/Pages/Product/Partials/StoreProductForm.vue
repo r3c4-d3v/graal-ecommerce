@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <section>
+    <section class="max-w-xl">
         <header>
             <h2 class="h2">Cadastrar novo produto</h2>
             <p class="p-small">
@@ -102,7 +102,8 @@ import {
     SelectInput,
     useForm,
     usePage,
-    ref
+    ref,
+    handleFormFieldErrors
 } from "@/Pages/Product/Partials/Barrels/StoreProductForm.js";
 
 const nameInput = ref(null);
@@ -119,13 +120,6 @@ const form = useForm({
     category: ''
 });
 
-const handleFormFieldErrors = (fieldName, inputElement) => {
-    if (form.errors[fieldName]) {
-        form.reset(fieldName);
-        inputElement.value.focus();
-    }
-}
-
 const reset = () => {
     form.reset();
     categoryInput.value.resetSelected()
@@ -136,10 +130,10 @@ const storeProduct = () => {
         preserveScroll: true,
         onSuccess: () => reset(),
         onError: () => {
-            handleFormFieldErrors('name', nameInput);
-            handleFormFieldErrors('description', descriptionInput);
-            handleFormFieldErrors('price', priceInput);
-            handleFormFieldErrors('category', categoryInput);
+            handleFormFieldErrors('name', nameInput, form);
+            handleFormFieldErrors('description', descriptionInput, form);
+            handleFormFieldErrors('price', priceInput, form);
+            handleFormFieldErrors('category', categoryInput, form);
         },
     });
 }

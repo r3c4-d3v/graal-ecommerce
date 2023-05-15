@@ -14,6 +14,10 @@ use Inertia\Response;
 
 class ProductController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function index(Request $request): Response
     {
         return Inertia::render('Product/index', [
@@ -24,6 +28,10 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * @param ProductStoreRequest $request
+     * @return RedirectResponse
+     */
     public function store(ProductStoreRequest $request): RedirectResponse
     {
         Product::create($request->validated());

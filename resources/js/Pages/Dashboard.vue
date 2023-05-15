@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import Container from "@/Components/Container.vue";
 </script>
 
 <style lang="scss">
@@ -18,12 +19,8 @@ import { Head } from '@inertiajs/vue3';
             <h2 class="h2">Dashboard</h2>
         </template>
 
-        <div class="wrapper">
-            <div class="container">
-                <div class="content">
-                    <div class="p-6 text-gray-900">Bem vindo!</div>
-                </div>
-            </div>
-        </div>
+        <Container>
+            <h2 class="h2">Bem vindo!</h2>
+        </Container>
     </AuthenticatedLayout>
 </template>
