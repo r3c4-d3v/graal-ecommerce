@@ -15,7 +15,7 @@ class ProductCategoryController extends Controller
 {
     public function index(Request $request): Response
     {
-        return Inertia::render('Category/index', [
+        return Inertia::render('Admin/Category/index', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);
@@ -24,6 +24,6 @@ class ProductCategoryController extends Controller
     public function store(CategoryStoreRequest $request): RedirectResponse
     {
         ProductCategory::create($request->validated());
-        return Redirect::route('category.index');
+        return Redirect::route('admin.category.index');
     }
 }

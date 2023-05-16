@@ -1,5 +1,5 @@
 <style lang="scss">
-@import "resources/scss/app.scss";
+@import 'resources/scss/app.scss';
 </style>
 
 <template>
@@ -104,7 +104,7 @@ import {
     usePage,
     ref,
     handleFormFieldErrors
-} from "@/Pages/Product/Partials/Barrels/StoreProductForm.js";
+} from "@/Pages/Admin/Product/Partials/Barrels/StoreProductForm.js";
 
 const nameInput = ref(null);
 const descriptionInput = ref(null);
@@ -126,7 +126,7 @@ const reset = () => {
 };
 
 const storeProduct = () => {
-    form.post(route('product.store'), {
+    form.post(route('admin.product.store'), {
         preserveScroll: true,
         onSuccess: () => reset(),
         onError: () => {

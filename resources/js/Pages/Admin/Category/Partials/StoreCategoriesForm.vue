@@ -51,14 +51,14 @@ import {
     useForm,
     ref,
     handleFormFieldErrors
-} from "@/Pages/Category/Partials/Barrels/StoreCategoriesForm.js";
+} from "@/Pages/Admin/Category/Partials/Barrels/StoreCategoriesForm.js";
 
 const nameInput = ref(null);
 
 const form = useForm({ name: '' });
 
 const storeCategory = () => {
-    form.post(route('category.store'), {
+    form.post(route('admin.category.store'), {
         preserveScroll: true,
         onSuccess: () => form.reset(),
         onError: () => handleFormFieldErrors('name', nameInput, form)

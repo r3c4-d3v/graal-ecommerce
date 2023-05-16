@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import {Head} from '@inertiajs/vue3';
-import StoreProductForm from "@/Pages/Product/Partials/StoreProductForm.vue";
+import StoreProductForm from "@/Pages/Admin/Product/Partials/StoreProductForm.vue";
 import Container from "@/Components/Container.vue";
 
 defineProps({
