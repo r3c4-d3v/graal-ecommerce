@@ -14,9 +14,13 @@ use Inertia\Response;
 
 class ProductController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function index(Request $request): Response
     {
-        return Inertia::render('Product/index', [
+        return Inertia::render('Admin/Product/index', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
             'productsList' => Product::orderBy('id', 'desc')->paginate(6),
@@ -24,9 +28,13 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * @param ProductStoreRequest $request
+     * @return RedirectResponse
+     */
     public function store(ProductStoreRequest $request): RedirectResponse
     {
         Product::create($request->validated());
-        return Redirect::route('product.index');
+        return Redirect::route('admin.product.index');
     }
 }
