@@ -8,48 +8,41 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-const ADMIN_PREFIX = '/admin';
-const PROFILE = '/profile';
-const PRODUCT = '/product';
-const CATEGORY = '/category';
-
-const DASHBOARD = '/dashboard';
-
 # Admin Routes
 Route::middleware(['admin.auth', 'verified'])->group(function () {
-    Route::prefix(ADMIN_PREFIX)->group(function () {
+    Route::prefix('/admin')->group(function () {
 
         # Dashboard
-        Route::get(DASHBOARD, function () {
+        Route::get('/dashboard', function () {
             return Inertia::render('Admin/Dashboard');
         })->name('admin.dashboard');
 
         # Profile edit
-        Route::get(PROFILE, [ProfileController::class, 'edit'])
+        Route::get('/profile', [ProfileController::class, 'edit'])
             ->name('admin.profile.edit');
 
         # Profile update
-        Route::patch(PROFILE, [ProfileController::class, 'update'])
+        Route::patch('/profile', [ProfileController::class, 'update'])
             ->name('admin.profile.update');
 
         # Profile delete
-        Route::delete(PROFILE, [ProfileController::class, 'destroy'])
+        Route::delete('/profile', [ProfileController::class, 'destroy'])
             ->name('admin.profile.destroy');
 
         # Product index
-        Route::get(PRODUCT, [ProductController::class, 'index'])
+        Route::get('/product', [ProductController::class, 'index'])
             ->name('admin.product.index');
 
         # Product store
-        Route::post(PRODUCT, [ProductController::class, 'store'])
+        Route::post('/product', [ProductController::class, 'store'])
             ->name('admin.product.store');
 
         # Category
-        Route::get(CATEGORY, [ProductCategoryController::class, 'index'])
+        Route::get('/category', [ProductCategoryController::class, 'index'])
             ->name('admin.category.index');
 
         # Category store
-        Route::post(CATEGORY, [ProductCategoryController::class, 'store'])
+        Route::post('/category', [ProductCategoryController::class, 'store'])
             ->name('admin.category.store');
     });
 });
