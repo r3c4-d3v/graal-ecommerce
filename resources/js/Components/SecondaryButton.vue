@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <button :type="type" class="button-secondary">
+    <button :type="type" class="button--secondary">
         <slot/>
     </button>
 </template>

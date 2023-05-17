@@ -6,7 +6,7 @@
     <section class="max-w-xl">
         <header>
             <h2 class="h2">Cadastrar novo produto</h2>
-            <p class="p-small">
+            <p class="p--small">
                 Preencha os campos abaixo para cadastrar um novo produto.
             </p>
         </header>
@@ -76,11 +76,11 @@
             </div>
 
             <!-- Buttons -->
-            <div class="container-buttons">
+            <div class="container__buttons">
                 <PrimaryButton :disabled="form.processing">Cadastrar</PrimaryButton>
 
                 <Transition
-                    class="transition-default"
+                    class="transition--default"
                     leave-to-class="opacity-0"
                     enter-from-class="opacity-0"
                 >
