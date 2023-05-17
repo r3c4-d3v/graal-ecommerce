@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
+use Inertia\Inertia;
+use Inertia\Response as InertiaResponse;
 
 class LoginController extends Controller
 {
-    public function index(): RedirectResponse
+    public function index(): InertiaResponse
     {
         return Inertia::render('Auth/Login');
     }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCategoryController;
@@ -13,16 +13,14 @@ const PROFILE = '/profile';
 const PRODUCT = '/product';
 const CATEGORY = '/category';
 
-# Public Routes
-Route::get('/login', [LoginController::class, 'index'])
-    ->name('login');
+const DASHBOARD = '/dashboard';
 
 # Admin Routes
 Route::middleware(['admin.auth', 'verified'])->group(function () {
     Route::prefix(ADMIN_PREFIX)->group(function () {
 
         # Dashboard
-        Route::get('/dashboard', function () {
+        Route::get(DASHBOARD, function () {
             return Inertia::render('Admin/Dashboard');
         })->name('admin.dashboard');
 
@@ -56,8 +54,12 @@ Route::middleware(['admin.auth', 'verified'])->group(function () {
     });
 });
 
-# Customer Routes
-Route::get('/', [CustomerController::class, 'index'])
-    ->name('customer.index');
+# App Routes
+Route::get('/', [AppController::class, 'index'])
+    ->name('app.index');
+
+# Public Routes
+Route::get('/login', [LoginController::class, 'index'])
+    ->name('login');
 
 require_once __DIR__ . '/auth.php';

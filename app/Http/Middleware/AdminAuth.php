@@ -23,7 +23,7 @@ class AdminAuth extends Auth
     {
         return self::isAdminUser()
             ? $next($request)
-            : Redirect::route('customer.index');
+            : Redirect::route('app.index');
     }
 
     /**
