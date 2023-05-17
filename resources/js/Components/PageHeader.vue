@@ -5,7 +5,7 @@
 <template>
     <header>
         <h2 class="h2">{{ title }}</h2>
-        <p class="p-small">
+        <p class="p--small">
             {{ text }}
         </p>
     </header>

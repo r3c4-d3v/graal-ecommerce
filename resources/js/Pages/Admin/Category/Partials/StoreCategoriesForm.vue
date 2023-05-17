@@ -28,7 +28,7 @@
                 </PrimaryButton>
 
                 <Transition
-                    class="transition-default"
+                    class="transition--default"
                     leave-to-class="opacity-0"
                     enter-from-class="opacity-0"
                 >
