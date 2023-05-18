@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Util;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -24,7 +25,7 @@ class Product extends Model
         $newProduct = new static([
             'name' => $product['name'],
             'description' => $product['description'],
-            'price' => stringToCurrency($product['price']),
+            'price' => Util::stringToCurrency($product['price']),
             'category_id' => (int)$product['category']
         ]);
 

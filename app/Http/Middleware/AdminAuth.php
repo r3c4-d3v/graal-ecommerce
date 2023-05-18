@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\Helpers;
+use App\Helpers\Util;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,8 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminAuth extends Auth
 {
-    const IS_ADMIN = 1;
-
     /**
      * Handle an incoming request from login page.
      *
@@ -21,23 +21,10 @@ class AdminAuth extends Auth
      */
     public function handle(Request $request, Closure $next): Response|Redirect
     {
-        return self::isAdminUser()
-            ? $next($request)
-            : Redirect::route('app.index');
-    }
-
-    /**
-     * Check if user role is admin
-     *
-     * @return bool
-     */
-    public static function isAdminUser(): bool
-    {
         $user = Auth::user();
 
-        if (empty($user) || $user->role_id !== self::IS_ADMIN) {
-            return false;
-        }
-        return true;
+        return Util::isAdminUser($user)
+            ? $next($request)
+            : Redirect::route('app.index');
     }
 }
