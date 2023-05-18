@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCategoryController;
@@ -54,5 +55,8 @@ Route::get('/', [AppController::class, 'index'])
 # Public Routes
 Route::get('/login', [LoginController::class, 'index'])
     ->name('login');
+
+Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
 
 require_once __DIR__ . '/auth.php';
