@@ -59,7 +59,7 @@
 
                                     <template #content>
                                         <DropdownLink :href="route('admin.profile.edit')">Meu Perfil</DropdownLink>
-                                        <DropdownLink :href="route('logout')" method="post" as="button">
+                                        <DropdownLink :href="route('admin.logout')" method="post" as="button">
                                             Sair
                                         </DropdownLink>
                                     </template>
@@ -122,7 +122,7 @@
 
                         <div class="mt-3 space-y-1">
                             <ResponsiveNavLink :href="route('admin.profile.edit')"> Perfil</ResponsiveNavLink>
-                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">
+                            <ResponsiveNavLink :href="route('admin.logout')" method="post" as="button">
                                 Sair
                             </ResponsiveNavLink>
                         </div>

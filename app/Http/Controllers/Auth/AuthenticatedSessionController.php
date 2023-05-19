@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Helpers\Util;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
+use App\Http\Requests\Admin\LoginRequest;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,9 +37,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return Util::isAdminUser($request->user())
-            ? redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD)
-            : redirect()->intended(RouteServiceProvider::HOME);
+        $user = Auth::user();
+
+        $isUserVerified = ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail());
+
+        if (!$isUserVerified) {
+            return Redirect::route('verification.notice');
+        }
+
+        return redirect()->intended('admin.dashboard');
     }
 
     /**
@@ -54,6 +59,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('app.index');
     }
 }

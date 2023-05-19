@@ -32,7 +32,7 @@ defineProps({
         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
             <Link
                 v-if="!isAuthenticated"
-                :href="route('login')"
+                :href="route('login.page')"
                 class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
             >
                 Acessar
@@ -48,7 +48,7 @@ defineProps({
 
             <Link
                 v-if="isAuthenticated"
-                :href="route('logout')"
+                :href="route('admin.logout')"
                 method="post"
                 class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
             >
