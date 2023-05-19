@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Helpers\Helpers;
 use App\Helpers\Util;
 use Closure;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -22,6 +23,11 @@ class AdminAuth extends Auth
     public function handle(Request $request, Closure $next): Response|Redirect
     {
         $user = Auth::user();
+
+        $isUserVerified = (bool)($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail());
+        if (!$user || !$isUserVerified) {
+            return Redirect::route('verification.notice');
+        }
 
         return Util::isAdminUser($user)
             ? $next($request)

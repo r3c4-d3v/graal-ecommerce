@@ -19,4 +19,9 @@ class AppController extends Controller
             'phpVersion' => PHP_VERSION,
         ]);
     }
+
+    public function notFound(): InertiaResponse
+    {
+        return Inertia::render('404');
+    }
 }

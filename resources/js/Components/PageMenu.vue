@@ -1,8 +1,15 @@
 <template>
     <div class="page__menu">
         <Link
+            v-if="showHome"
+            :href="route('app.index')"
+            class="page__menu__link"
+        >
+            Voltar ao site
+        </Link>
+        <Link
             v-if="!isAuthenticated"
-            :href="route('login')"
+            :href="route('admin.login.page')"
             class="page__menu__link"
         >
             Acessar
@@ -10,7 +17,7 @@
 
         <Link
             v-if="!isAuthenticated"
-            :href="route('register')"
+            :href="route('admin.register.page')"
             class="page__menu__link"
         >
             Cadastrar
@@ -18,8 +25,8 @@
 
         <Link
             method="post"
-            v-if="isAuthenticated"
-            :href="route('logout')"
+            v-if="isAuthenticated && !showHome"
+            :href="route('admin.logout')"
             class="page__menu__link"
         >
             Sair
@@ -40,5 +47,9 @@ defineProps({
         type: Boolean,
         required: true
     },
+    showHome: {
+        type: Boolean,
+        default: false
+    }
 })
 </script>
