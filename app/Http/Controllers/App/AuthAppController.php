@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,14 +16,14 @@ use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 
-class AuthAdminController extends Controller
+class AuthAppController extends Controller
 {
     /**
      * @return InertiaResponse
      */
     public function renderLoginPage(): InertiaResponse
     {
-        return Inertia::render('Admin/Auth/Login', [
+        return Inertia::render('App/Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status')
         ]);
@@ -31,7 +31,7 @@ class AuthAdminController extends Controller
 
     public function renderDashboardPage(): InertiaResponse
     {
-        return Inertia::render('Admin/Dashboard');
+        return Inertia::render('App/Dashboard');
     }
 
     /**
@@ -48,7 +48,7 @@ class AuthAdminController extends Controller
         $user = Auth::user();
 
         return isUserVerified($user)
-            ? Redirect::route('admin.dashboard')
+            ? Redirect::route('App.dashboard')
             : Redirect::route('verification.notice');
     }
 

@@ -26,6 +26,9 @@
                                 <NavLink :href="route('admin.category.index')" :active="route().current('admin.category.index')">
                                     Categorias
                                 </NavLink>
+                                <NavLink :href="route('admin.courier.index')" :active="route().current('admin.courier.index')">
+                                    Entregadores
+                                </NavLink>
                             </div>
                         </div>
 

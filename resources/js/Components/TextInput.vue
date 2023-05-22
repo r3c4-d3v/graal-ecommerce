@@ -2,13 +2,13 @@
     <input
         ref="input"
         class="input"
-        :value="useMoneyMask ? formatMoney(modelValue) : modelValue"
+        :value="useMoneyMask ? formatMoney(modelValue) : (usePhoneMask ? formatPhoneNumber(modelValue) : modelValue)"
         @input="$emit('update:modelValue', $event.target.value)"
     />
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import {onMounted, ref} from 'vue';
 
 const input = ref(null);
 
@@ -20,7 +20,11 @@ const props = defineProps({
     useMoneyMask: {
         type: Boolean,
         default: false
-    }
+    },
+    usePhoneMask: {
+        type: Boolean,
+        default: false
+    },
 });
 
 onMounted(() => {
@@ -44,4 +48,15 @@ function formatMoney(value) {
 
     return newValue;
 }
+
+function formatPhoneNumber(value) {
+    const regex = /^(\d{2})(\d{4,5})(\d{4})$/;
+
+    if (regex.test(value)) {
+        return value.replace(regex, '($1) $2-$3');
+    } else {
+        return value;
+    }
+}
+
 </script>

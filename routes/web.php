@@ -1,18 +1,22 @@
 <?php
 
-use App\Http\Controllers\{Admin\AuthAdminController,
+use App\Http\Controllers\{
+    AppController,
+    Admin\AuthAdminController,
+    Admin\CourierController,
     Admin\ProductCategoryController,
     Admin\ProductController,
     Admin\ProfileController,
-    AppController};
-use App\Http\Controllers\Auth\{ConfirmablePasswordController,
+};
+use App\Http\Controllers\Auth\{
+    ConfirmablePasswordController,
     EmailVerificationNotificationController,
     EmailVerificationPromptController,
     PasswordController,
     RegisteredUserController,
-    VerifyEmailController};
+    VerifyEmailController
+};
 use Illuminate\Support\Facades\{Mail, Route};
-
 
 Route::fallback(function () {
     return redirect()->route('404');
@@ -30,7 +34,7 @@ Route::get('/404', [AppController::class, 'notFound'])
 /**
  * Admin Routes
  */
-Route::get('admin/login', [AuthAdminController::class, 'renderLoginPage'])
+Route::get('admin/auth/login', [AuthAdminController::class, 'renderLoginPage'])
     ->name('admin.login.page');
 
 Route::post('admin/login', [AuthAdminController::class, 'login'])
@@ -72,16 +76,32 @@ Route::post('admin/category', [ProductCategoryController::class, 'store'])
     ->middleware('AdminAuthentication')
     ->name('admin.category.store');
 
+Route::get('admin/courier', [CourierController::class, 'index'])
+    ->middleware(['redirectIfNotAdmin'])
+    ->name('admin.courier.index');
+
+Route::post('admin/courier', [CourierController::class, 'store'])
+    ->middleware('redirectIfNotAdmin')
+    ->name('admin.courier.store');
+
 /**
- * Guest Routes
+ * App Routes
  */
-Route::get('register', [RegisteredUserController::class, 'create'])
-    ->name('admin.register.page');
+Route::get('app/auth/login', [AuthAdminController::class, 'renderLoginPage'])
+    ->name('app.login.page');
+
+Route::post('app/login', [AuthAdminController::class, 'login'])
+    ->name('app.login.submit');
+
+Route::post('app/logout', [AuthAdminController::class, 'destroy'])
+    ->name('app.logout');
+
+Route::get('app/register', [RegisteredUserController::class, 'create'])
+    ->middleware('redirectIfAuthenticated')
+    ->name('app.register.page');
 
 Route::post('register', [RegisteredUserController::class, 'store'])
-    ->middleware('redirectIfAuthenticated')
     ->name('register.submit');
-
 
 /**
  * Email Routes
