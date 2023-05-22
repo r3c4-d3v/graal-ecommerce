@@ -103,6 +103,10 @@ Route::get('app/register', [RegisteredUserController::class, 'create'])
 Route::post('register', [RegisteredUserController::class, 'store'])
     ->name('register.submit');
 
+Route::get('app/profile', [ProfileController::class, 'edit'])
+    ->middleware(['redirectIfNotAdmin'])
+    ->name('app.profile.edit');
+
 /**
  * Email Routes
  */
