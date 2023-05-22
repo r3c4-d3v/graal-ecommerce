@@ -1,15 +1,13 @@
 <?php
 
-namespace Tests\Feature\Admin;
+namespace Tests\Unit\Admin;
 
 use App\Models\Role;
 use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication;
+use Faker\Factory as Faker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
-use Faker\Factory as Faker;
 
 class AuthAdminControllerTest extends TestCase
 {
