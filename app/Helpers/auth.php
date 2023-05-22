@@ -31,5 +31,5 @@ function isAdmin(Authenticatable|null $user): bool
 
 function isUserVerified($user): bool
 {
-    return ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail());
+    return ($user instanceof MustVerifyEmail && $user->hasVerifiedEmail());
 }
