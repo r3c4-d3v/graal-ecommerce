@@ -11,7 +11,7 @@ const IS_ADMIN = 1;
  */
 function isAdmin(Authenticatable|null $user): bool
 {
-    return ($user->role_id === IS_ADMIN);
+    return ($user?->role_id === IS_ADMIN);
 }
 
 /**
