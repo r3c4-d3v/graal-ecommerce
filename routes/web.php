@@ -1,18 +1,16 @@
 <?php
 
 use App\Http\Controllers\{Admin\AuthAdminController,
-    AppController,
-    ProductCategoryController,
-    ProductController,
-    ProfileController
-};
+    Admin\ProductCategoryController,
+    Admin\ProductController,
+    Admin\ProfileController,
+    AppController};
 use App\Http\Controllers\Auth\{ConfirmablePasswordController,
     EmailVerificationNotificationController,
     EmailVerificationPromptController,
     PasswordController,
     RegisteredUserController,
-    VerifyEmailController
-};
+    VerifyEmailController};
 use Illuminate\Support\Facades\{Mail, Route};
 
 

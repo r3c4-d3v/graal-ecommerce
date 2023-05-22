@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\LoginRequest;
 use Illuminate\Contracts\Foundation\Application as FoundationApplication;
