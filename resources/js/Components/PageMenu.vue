@@ -9,7 +9,7 @@
         </Link>
         <Link
             v-if="!isAuthenticated"
-            :href="route('admin.login.page')"
+            :href="route('app.login.page')"
             class="page__menu__link"
         >
             Acessar
@@ -17,7 +17,7 @@
 
         <Link
             v-if="!isAuthenticated"
-            :href="route('admin.register.page')"
+            :href="route('app.register.page')"
             class="page__menu__link"
         >
             Cadastrar
@@ -26,7 +26,7 @@
         <Link
             method="post"
             v-if="isAuthenticated && !showHome"
-            :href="route('admin.logout')"
+            :href="route('app.logout')"
             class="page__menu__link"
         >
             Sair

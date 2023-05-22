@@ -33,7 +33,7 @@
             <div>
                 <InputLabel
                     for="description"
-                    value="Descrição do produto."
+                    value="Descrição do produto"
                 />
 
                 <TextInput
