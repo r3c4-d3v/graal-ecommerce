@@ -2,16 +2,17 @@
 
 use App\Http\Controllers\{Admin\AuthAdminController,
     AppController,
-    DashboardController,
     ProductCategoryController,
     ProductController,
-    ProfileController};
+    ProfileController
+};
 use App\Http\Controllers\Auth\{ConfirmablePasswordController,
     EmailVerificationNotificationController,
     EmailVerificationPromptController,
     PasswordController,
     RegisteredUserController,
-    VerifyEmailController};
+    VerifyEmailController
+};
 use Illuminate\Support\Facades\{Mail, Route};
 
 
@@ -38,6 +39,7 @@ Route::post('admin/login', [AuthAdminController::class, 'login'])
     ->name('admin.login.submit');
 
 Route::post('admin/logout', [AuthAdminController::class, 'destroy'])
+    ->middleware('redirectIfNotAdmin')
     ->name('admin.logout');
 
 Route::get('admin/dashboard', [AuthAdminController::class, 'renderDashboardPage'])
@@ -61,6 +63,7 @@ Route::get('admin/product', [ProductController::class, 'index'])
     ->name('admin.product.index');
 
 Route::post('admin/product', [ProductController::class, 'store'])
+    ->middleware('redirectIfNotAdmin')
     ->name('admin.product.store');
 
 Route::get('admin/category', [ProductCategoryController::class, 'index'])
@@ -68,8 +71,8 @@ Route::get('admin/category', [ProductCategoryController::class, 'index'])
     ->name('admin.category.index');
 
 Route::post('admin/category', [ProductCategoryController::class, 'store'])
-    ->name('admin.category.store')
-    ->middleware('AdminAuthenticat;ion');
+    ->middleware('AdminAuthentication')
+    ->name('admin.category.store');
 
 /**
  * Guest Routes

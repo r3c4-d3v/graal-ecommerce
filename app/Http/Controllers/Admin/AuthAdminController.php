@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\LoginRequest;
 use Illuminate\Contracts\Foundation\Application as FoundationApplication;
@@ -45,11 +46,11 @@ class AuthAdminController extends Controller
 
         $request->session()->regenerate();
 
-        if (isUserVerified(Auth::user())) {
-            return redirect()->intended('admin.dashboard');
-        }
+        $user = Auth::user();
 
-        return Redirect::route('verification.notice');
+        return isUserVerified($user)
+            ? Redirect::route('admin.dashboard')
+            : Redirect::route('verification.notice');
     }
 
     /**
