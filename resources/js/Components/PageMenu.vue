@@ -51,11 +51,8 @@
     </div>
 </template>
 <script setup>
-import {Link} from "@/Components/Barrels/PageMenu.js"
-import PrimaryButton from "@/Components/PrimaryButton.vue";
-import SecondaryButton from "@/Components/SecondaryButton.vue";
-import Dropdown from "@/Components/Dropdown.vue";
-import DropdownLink from "@/Components/DropdownLink.vue";
+import {Link, PrimaryButton, SecondaryButton, Dropdown, DropdownLink} from "@/Components/Barrels/PageMenu.js"
+
 
 defineProps({
     canLogin: {
