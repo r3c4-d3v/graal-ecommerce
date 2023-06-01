@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCategory extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+
+    protected $fillable = ['name', 'img_url'];
 
     /**
      * @param array $category

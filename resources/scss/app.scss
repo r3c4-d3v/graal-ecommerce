@@ -55,7 +55,7 @@
         &__content {
             @apply max-w-full p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl
             from-gray-700/50 dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl
-            shadow-gray-500/20 dark:shadow-none flex z-10;
+            shadow-gray-500/20 dark:shadow-none flex z-10 overflow-hidden;
         }
     }
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -17,6 +19,8 @@ class AppController extends Controller
             'isAuthenticated' => (bool)Auth::user(),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
+            'productCategories' => ProductCategory::all(),
+            'products' => Product::all(),
         ]);
     }
 

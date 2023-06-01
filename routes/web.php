@@ -100,6 +100,10 @@ Route::get('app/register', [RegisteredUserController::class, 'create'])
     ->middleware('redirectIfAuthenticated')
     ->name('app.register.page');
 
+Route::get('app/category/{category_id}', [RegisteredUserController::class, 'create'])
+    ->middleware('redirectIfAuthenticated')
+    ->name('app.category.page');
+
 Route::post('register', [RegisteredUserController::class, 'store'])
     ->name('register.submit');
 

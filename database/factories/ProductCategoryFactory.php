@@ -17,7 +17,9 @@ class ProductCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => ucfirst($this->faker->word())
+            'name' => ucfirst($this->faker->word()),
+            'image_url' => $this->faker->imageUrl(640, 480, 'food'),
+            'slug' => $this->faker->slug()
         ];
     }
 }

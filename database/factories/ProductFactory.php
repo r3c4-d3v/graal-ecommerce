@@ -18,6 +18,7 @@ class ProductFactory extends Factory
     {
         return [
             'name' => ucfirst($this->faker->sentence(2)),
+            'slug' => $this->faker->slug(),
             'description' => ucfirst($this->faker->sentence(5)),
             'price' => $this->faker->randomFloat(1, 20, 90),
             'image_url' => $this->faker->imageUrl(640, 480, 'food'),
