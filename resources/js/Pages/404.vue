@@ -13,7 +13,7 @@
 
             <div class="page__wrapper text-center">
                 <div class="page__content">
-                    <h1 class="h1">Ops! Página não encontrada =[</h1>
+                    <h1 class="h1">Ops! Página não encontrada =(</h1>
                 </div>
             </div>
 
